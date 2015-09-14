@@ -1,12 +1,17 @@
-angular.module('SocketToMe.join').controller('JoinController', ['$scope', function ($scope) {
+angular.module('SocketToMe.join').controller('JoinController', ['$scope', '$location', function ($scope, $location) {
 
   $ctrl = this;
   $scope.meeting = {};
+  $scope.error = "";
 
   $scope.createJoinMeeting = function() {
 
+    $scope.error = "";
+    if (!$scope.meeting.name || $scope.meeting.name.length === 0) {
+      $scope.error = "Please enter a meeting name";
+      return;
+    }
     io.socket.get('/meeting', {name: $scope.meeting.name}, function (existingMeeting) {
-      console.log(existingMeeting.length, existingMeeting);
       if (existingMeeting.length) {
         // join the meeting if no password
         if (!$scope.meeting.password || $scope.meeting.password.length === 0) {
@@ -17,9 +22,11 @@ angular.module('SocketToMe.join').controller('JoinController', ['$scope', functi
             console.log('Joining Meeting As moderator');
             $scope.$root.modToken = $scope.meeting.name + $scope.meeting.password;
             // Redirect to moderate/meetingName
-            console.log('redirecting to moderate');
+            $location.path('/moderate/setup/' + $scope.meeting.name);
+            $scope.$apply();
           } else {
-            console.log('error ', 'password dont match');
+            $scope.error = 'Wrong password provided for this event. If you were trying to create an event, choose a different name.'
+            $scope.$apply();
           }
         }
       } else {
@@ -28,7 +35,8 @@ angular.module('SocketToMe.join').controller('JoinController', ['$scope', functi
           $ctrl.createMeeting();
           console.log('redirecting to moderate');
         } else {
-          console.log('errors 1');
+          $scope.error = "No meeting exists with this name, enter a password to create an event."
+          $scope.$apply();
         }
       };
     });

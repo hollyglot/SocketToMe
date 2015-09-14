@@ -4,7 +4,7 @@ angular.module('SocketToMe.moderate', ['ui.router'])
 
   $stateProvider
     .state('moderate', {
-      url: '/moderate',
+      url: '/moderate/setup/:meetingName',
       templateUrl: 'features/moderate/moderateView.html',
       controller: 'ModerateController'
     });
