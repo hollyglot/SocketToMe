@@ -15,7 +15,6 @@ angular.module('SocketToMe.participate').controller('ParticipateController', ['$
       if ($scope.meeting.currentQuestion) {
 
         io.socket.get('/response', {question: $scope.meeting.currentQuestion.id}, function (allResponses) {
-          console.log('all ', allResponses);
 
           allResponses.forEach(function (response) {
             if (response.type === 'stop') {
@@ -37,14 +36,12 @@ angular.module('SocketToMe.participate').controller('ParticipateController', ['$
   }
 
   io.socket.on('meeting', function (meetingChanged) {
-    console.log('something changed ', meetingChanged);
     $ctrl.init();
   })
 
   $scope.sendResponse = function() {
     $scope.newResponse.question = $scope.meeting.currentQuestion.id;
     io.socket.post('/response', $scope.newResponse, function (created) {
-      console.log(created);
       $scope.newResponse = {};
       if (created.type === 'stop') {
         $scope.createdResponses.stop.push(created.description);
@@ -53,7 +50,7 @@ angular.module('SocketToMe.participate').controller('ParticipateController', ['$
       } else {
         $scope.createdResponses.cont.push(created.description);
       }
-      console.log($scope.createdResponses);
+
       $scope.$apply();
     });
   };

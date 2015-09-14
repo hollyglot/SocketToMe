@@ -9,13 +9,11 @@ angular.module('SocketToMe.moderate').controller('ModerateController', ['$scope'
 
     io.socket.get('/meeting', {name: $stateParams.meetingName}, function (meeting) {
 
-      $scope.$root.meeting = meeting[0];
-
-      // if ($scope.$root.modToken !== meeting[0].name + meeting[0].password) {
-      //   $location.path('/join');
-      // } else {
-      //   $scope.$root.meeting = meeting[0];
-      // }
+      if ($scope.$root.modToken !== meeting[0].name + meeting[0].password) {
+        $location.path('/join');
+      } else {
+        $scope.$root.meeting = meeting[0];
+      }
 
       $scope.$apply();
     });
@@ -71,8 +69,6 @@ angular.module('SocketToMe.moderate').controller('ModerateController', ['$scope'
 
       io.socket.get('/question', {meeting: $scope.$root.meeting.id, isDone: false}, function (unansweredQuestions) {
         $scope.unansweredQuestions = unansweredQuestions;
-
-        console.log(unansweredQuestions.length, unansweredQuestions);
 
         if (unansweredQuestions.length) {
 
