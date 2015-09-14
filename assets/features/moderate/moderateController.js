@@ -35,6 +35,7 @@ angular.module('SocketToMe.moderate').controller('ModerateController', ['$scope'
     io.socket.post('/question', $scope.newQuestion, function (createdQuestion) {
       if (createdQuestion) {
         $scope.questions.push(createdQuestion);
+        $scope.newQuestion = {};
         $scope.$apply();
       }
     });
