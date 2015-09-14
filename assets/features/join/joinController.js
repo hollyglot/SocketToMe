@@ -34,6 +34,8 @@ angular.module('SocketToMe.join').controller('JoinController', ['$scope', '$loca
         if ($scope.meeting.password && $scope.meeting.password.length > 0) {
           $ctrl.createMeeting();
           console.log('redirecting to moderate');
+          $location.path('/moderate/setup/' + $scope.meeting.name);
+          $scope.$apply();
         } else {
           $scope.error = "No meeting exists with this name, enter a password to create an event."
           $scope.$apply();

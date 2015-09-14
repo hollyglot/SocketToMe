@@ -15,6 +15,20 @@ module.exports = {
 
     password: {
         type: 'string'
+    },
+
+    currentQuestion: {
+        model: 'question'
+    },
+
+    currentAction: {
+        type: 'string',
+        enum: ['wait', 'respond', 'review'],
+        defaultsTo: 'wait'
+    },
+
+    questions: {
+        collection: 'question'
     }
 
   }

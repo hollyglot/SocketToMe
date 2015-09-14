@@ -1,0 +1,8 @@
+Running Meeting!
+<p>{{meeting.name}}</p>
+<p>{{meeting.currentQuestion.value}}</p>
+
+<p ng-if="meeting.currentAction === 'respond'">Folks are currently answering this question</p>
+<p ng-if="meeting.currentAction === 'review'">Showing results for this question</p>
+<p>Question Status: <span ng-bind="meeting.currentQuestion.isDone ? 'Done' : 'In Progress'"></span></p>
+<button ng-click="continue()">Continue</button>

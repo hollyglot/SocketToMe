@@ -3,9 +3,14 @@ angular.module('SocketToMe.moderate', ['ui.router'])
 .config(['$stateProvider', function ($stateProvider) {
 
   $stateProvider
-    .state('moderate', {
+    .state('moderateSetup', {
       url: '/moderate/setup/:meetingName',
-      templateUrl: 'features/moderate/moderateView.html',
+      templateUrl: 'features/moderate/moderateSetupView.html',
+      controller: 'ModerateController'
+    })
+    .state('moderateRun', {
+      url: '/moderate/run/:meetingName',
+      templateUrl: 'features/moderate/moderateRunView.html',
       controller: 'ModerateController'
     });
 

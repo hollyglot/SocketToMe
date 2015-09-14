@@ -16,6 +16,11 @@ module.exports = {
 
     value: {
       type: 'text'
+    },
+
+    isDone: {
+      type: 'boolean',
+      defaultsTo: false
     }
 
   }

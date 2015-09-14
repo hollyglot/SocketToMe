@@ -1,11 +1,13 @@
 <h1>Moderate View</h1>
 <p>Token: {{modToken}}</p>
 
-<ul ng-repeat="question in questions">
-  <li>{{question.value}}</li>
-</ul>
+<ol>
+  <li ng-repeat="question in questions">{{question.value}}</li>
+</ol>
 
 <form ng-submit="createQuestion()">
   <input type="text" ng-model="newQuestion.value"/>
   <input type="submit" value="Add Question"/>
 </form>
+
+<button ng-click="startMeeting()">Start Event</button>
