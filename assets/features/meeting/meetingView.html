@@ -1,19 +1,19 @@
 <h1>Meeting View</h1>
 
 <form ng-submit="sendResponse()">
-  <fieldset>
-    <legend>Feedback Type</legend>
-    <input type="radio" name="feedbackType" id="feedbackStop" value="stop" required ng-model="response.type"><label for="feedbackStop">Stop</label>
-    <br>
-    <input type="radio" name="feedbackType" id="feedbackStart" value="start" required ng-model="response.type"><label for="feedbackStart">Start</label>
-    <br>
-    <input type="radio" name="feedbackType" id="feedbackContinue" value="continue" required ng-model="response.type"><label for="feedbackContinue">Continue</label>
-  </fieldset>
+  <p>Feedback Type</p>
+  <input type="radio" name="feedbackType" id="feedbackStop" value="stop" required ng-model="response.type" class="with-gap">
+  <label for="feedbackStop">Stop</label><br>
+  <input type="radio" name="feedbackType" id="feedbackStart" value="start" required ng-model="response.type" class="with-gap">
+  <label for="feedbackStart">Start</label><br>
+  <input type="radio" name="feedbackType" id="feedbackContinue" value="continue" required ng-model="response.type" class="with-gap">
+  <label for="feedbackContinue">Continue</label><br>
 
-  <fieldset>
-    <legend>Description</legend>
-    <textarea name="description" id="description" required ng-model="response.description">
+  <div class="input-field col s12">
+    <p>Description</p>
+    <textarea name="description" id="description" class="materialize-textarea" required ng-model="response.description">
     </textarea>
-  </fieldset>
-  <input type="submit" value="Send Feedback">
+  </div>
+
+  <button class="btn-large">Send Feedback<i class="material-icons right">message</i></button>
 </form>
