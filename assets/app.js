@@ -5,7 +5,6 @@
  */
 angular.module('SocketToMe', [
   'SocketToMe.join',
-  'SocketToMe.meeting',
   'SocketToMe.moderate',
   'SocketToMe.participate',
   'bethel.sailsSocket'
