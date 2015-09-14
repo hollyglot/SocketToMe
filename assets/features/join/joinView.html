@@ -1,15 +1,26 @@
 <div>
   <h1>This is the ANGULAR chat view</h1>
 
-  <div ng-if="error.length">
-      <p>{{error}}</p>
-  </div>
   <form ng-submit="createJoinMeeting()">
-    <input type="text" ng-model="meeting.name" />
-    <input type="text" ng-model="meeting.password" placeholder="Required to Create New Meetings"/>
-    <input type="submit" value="Join / Create Meeting">
+    <div class="row">
+      <div class="input-field col s6">
+        <input id="meetingName" type="text" ng-model="meeting.name" />
+        <label for="meetingName">Meeting Name</label>
+      </div>
+      <div class="input-field col s6">
+        <input type="text" id="meetingPassword" ng-model="meeting.password"/>
+        <label for="meetingPassword">Password (required to create new meetings)</label>
+      </div>
+    </div>
+
+    <div class="row" ng-if="error.length">
+        <!-- <div class="col s12 m5"> -->
+          <div class="card-panel red">
+            <span class="white-text">{{error}}</span>
+          </div>
+        <!-- </div> -->
+    </div>
+
+    <button class="btn-large">{{meeting.password.length > 0 ? 'Create' : 'Join'}} Meeting</button>
   </form>
-
-  {{meeting.name}}
-
 </div>
