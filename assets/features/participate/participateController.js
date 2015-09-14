@@ -12,22 +12,26 @@ angular.module('SocketToMe.participate').controller('ParticipateController', ['$
 
       $scope.meeting = meeting[0];
 
-      io.socket.get('/response', {question: $scope.meeting.currentQuestion.id}, function (allResponses) {
-        console.log('all ', allResponses);
+      if ($scope.meeting.currentQuestion) {
 
-        allResponses.forEach(function (response) {
-          if (response.type === 'stop') {
-            $scope.allResponses.stop.push(response.description);
-          } else if (response.type === 'start') {
-            $scope.allResponses.start.push(response.description);
-          } else {
-            $scope.allResponses.cont.push(response.description);
-          }
+        io.socket.get('/response', {question: $scope.meeting.currentQuestion.id}, function (allResponses) {
+          console.log('all ', allResponses);
+
+          allResponses.forEach(function (response) {
+            if (response.type === 'stop') {
+              $scope.allResponses.stop.push(response.description);
+            } else if (response.type === 'start') {
+              $scope.allResponses.start.push(response.description);
+            } else {
+              $scope.allResponses.cont.push(response.description);
+            }
+          });
+
+          $scope.$apply();
+
         });
 
-        $scope.$apply();
-
-      });
+      }
 
     });
   }

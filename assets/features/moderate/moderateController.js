@@ -1,5 +1,6 @@
 angular.module('SocketToMe.moderate').controller('ModerateController', ['$scope', '$stateParams', '$location', function ($scope, $stateParams, $location) {
 
+  $ctrl = this;
   $scope.questions = [];
   $scope.newQuestion = {};
   $scope.unansweredQuestions = [];
@@ -8,11 +9,13 @@ angular.module('SocketToMe.moderate').controller('ModerateController', ['$scope'
 
     io.socket.get('/meeting', {name: $stateParams.meetingName}, function (meeting) {
 
-      if ($scope.$root.modToken !== meeting[0].name + meeting[0].password) {
-        $location.path('/join');
-      } else {
-        $scope.$root.meeting = meeting[0];
-      }
+      $scope.$root.meeting = meeting[0];
+
+      // if ($scope.$root.modToken !== meeting[0].name + meeting[0].password) {
+      //   $location.path('/join');
+      // } else {
+      //   $scope.$root.meeting = meeting[0];
+      // }
 
       $scope.$apply();
     });
@@ -20,11 +23,13 @@ angular.module('SocketToMe.moderate').controller('ModerateController', ['$scope'
   }
 
   $scope.$root.$watch('meeting', function (newValue) {
+
     if (!newValue) return;
     io.socket.get('/question', {meeting: newValue.id}, function (foundQuestions) {
       $scope.questions = foundQuestions;
       $scope.$apply();
     });
+
   });
 
   $scope.createQuestion = function () {
@@ -85,6 +90,29 @@ angular.module('SocketToMe.moderate').controller('ModerateController', ['$scope'
 
     }
 
+    $ctrl.getResponses();
+
+  }
+
+  $ctrl.getResponses = function () {
+
+    $scope.allResponses = {stop: [],  start: [], cont: []};
+
+    io.socket.get('/response', {question: $scope.$root.meeting.currentQuestion.id}, function (allResponses) {
+
+      allResponses.forEach(function (response) {
+        if (response.type === 'stop') {
+          $scope.allResponses.stop.push(response.description);
+        } else if (response.type === 'start') {
+          $scope.allResponses.start.push(response.description);
+        } else {
+          $scope.allResponses.cont.push(response.description);
+        }
+      });
+
+      $scope.$apply();
+
+    });
   }
 
   $scope.init();
