@@ -1,4 +1,4 @@
-angular.module('SocketToMe.join').controller('JoinController', ['$scope', function ($scope) {
+angular.module('SocketToMe.join').controller('JoinController', ['$scope', '$cookies', function ($scope, $cookies) {
 
   $ctrl = this;
   $scope.meeting = {};

@@ -3,9 +3,12 @@
  *
  * @type {angular.Module}
  */
-angular.module('SocketToMe', ['SocketToMe.join'])
+angular.module('SocketToMe', [
+  'SocketToMe.join',
+  'SocketToMe.meeting'
+])
 
-.config(['$urlRouterProvider', function ($urlRouterProvider) {
+.config(['$urlRouterProvider', 'ngCookies', function ($urlRouterProvider, ngCookies) {
 
   if (!window.__minimal && !window.__anonymous)
     $urlRouterProvider.otherwise('/join');
