@@ -1,13 +1,21 @@
 <h1>Moderate View</h1>
 <p>Token: {{modToken}}</p>
 
-<ol>
-  <li ng-repeat="question in questions">{{question.value}}</li>
-</ol>
+<ul class="collection with-header">
+  <li class="collection-header"><h4>Questions</h4></li>
+  <li class="collection-item" ng-repeat="question in questions" >{{question.value}}</li>
+</ul>
 
 <form ng-submit="createQuestion()">
-  <input type="text" ng-model="newQuestion.value"/>
-  <input type="submit" value="Add Question"/>
+  <div class="row">
+    <div class="input-field col s9">
+      <input id="newQuestion" type="text" ng-model="newQuestion.value" required/>
+      <label for="newQuestion">Enter a new question</label>
+    </div>
+    <div class="col s3">
+      <input class="btn-large right" type="submit" value="Add Question"/>
+    </div>
+  </div>
 </form>
 
-<button ng-click="startMeeting()">Start Event</button>
+<button class="btn-large green darken-2" ng-click="startMeeting()">Start Event</button>
