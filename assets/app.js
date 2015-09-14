@@ -3,12 +3,12 @@
  *
  * @type {angular.Module}
  */
-angular.module('SocketToMe', ['SocketToMe.chat'])
+angular.module('SocketToMe', ['SocketToMe.join'])
 
 .config(['$urlRouterProvider', function ($urlRouterProvider) {
 
   if (!window.__minimal && !window.__anonymous)
-    $urlRouterProvider.otherwise('/chat');
+    $urlRouterProvider.otherwise('/join');
 
 }])
 
