@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en" ng-app="SocketToMe" ng-controller="AppCtrl">
+<head>
+  <meta charset="utf-8" />
+  <!--[if IE]><meta http-equiv="X-UA-Compatible" content="IE=edge" /><![endif]-->
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>SocketToMe</title>
+  <!--STYLES-->
+  <link rel="stylesheet" href="/styles/importer.css">
+  <!--STYLES END-->
+</head>
+
+<body>
+
+  <h1>Chat Page</h1>
+  <div ui-view>
+    <!--ANGULAR VIEW-->
+  </div>
+
+  <%- body %>
+
+  <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.4/angular.min.js"></script>
+  <!--SCRIPTS-->
+  <script src="/components/angular-ui-router/release/angular-ui-router.min.js"></script>
+  <script src="/js/dependencies/sails.io.js"></script>
+  <script src="/features/chatConfig.js"></script>
+  <script src="/features/chatController.js"></script>
+  <script src="/app.js"></script>
+  <!--SCRIPTS END-->
+
+</body>
+
+</html>
