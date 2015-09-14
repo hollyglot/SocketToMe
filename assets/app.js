@@ -6,7 +6,9 @@
 angular.module('SocketToMe', [
   'SocketToMe.join',
   'SocketToMe.meeting',
-  'SocketToMe.moderate'
+  'SocketToMe.moderate',
+  'SocketToMe.participate',
+  'bethel.sailsSocket'
 ])
 
 .config(['$urlRouterProvider', function ($urlRouterProvider) {

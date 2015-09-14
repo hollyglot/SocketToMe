@@ -53,7 +53,8 @@ angular.module('SocketToMe.join').controller('JoinController', ['$scope', '$loca
   }
 
   $ctrl.joinMeeting = function() {
-
+    $location.path('/participate/' + $scope.meeting.name);
+    $scope.$apply();
   }
 
 }]);

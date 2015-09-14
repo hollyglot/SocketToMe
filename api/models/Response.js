@@ -11,10 +11,10 @@ module.exports = {
 
     question: {
       model: 'question',
-      // required: true
+      required: true
     },
 
-    comment: {
+    description: {
       type: 'text'
     },
 
