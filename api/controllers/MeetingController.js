@@ -1,7 +1,7 @@
 /**
- * UserController
+ * MeetingController
  *
- * @description :: Server-side logic for managing users
+ * @description :: Server-side logic for managing events
  * @help        :: See http://sailsjs.org/#!/documentation/concepts/Controllers
  */
 

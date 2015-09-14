@@ -3,9 +3,7 @@
  *
  * @type {angular.Module}
  */
-angular.module('SocketToMe', [
-  'SocketToMe.chat'
-])
+angular.module('SocketToMe', ['SocketToMe.chat'])
 
 .config(['$urlRouterProvider', function ($urlRouterProvider) {
 
