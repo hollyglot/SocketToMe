@@ -21,7 +21,10 @@ var cssFilesToInject = [
 var libraryDependencies = [
   // Angular dependencies
   'components/angular-ui-router/release/angular-ui-router.min.js',
-  'components/angular-sails-socket/dist/angular-sails-socket.min.js'
+  'components/angular-sails-socket/dist/angular-sails-socket.min.js',
+  'components/humanize-duration/humanize-duration.js',
+  'components/momentjs/min/moment.min.js',
+  'components/angular-timer/dist/angular-timer.min.js'
 ];
 
 // Client-side javascript files to inject in order

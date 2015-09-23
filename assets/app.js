@@ -8,7 +8,8 @@ angular.module('SocketToMe', [
   'SocketToMe.meeting',
   'SocketToMe.moderate',
   'SocketToMe.participate',
-  'bethel.sailsSocket'
+  'bethel.sailsSocket',
+  'timer'
 ])
 
 .config(['$urlRouterProvider', function ($urlRouterProvider) {
