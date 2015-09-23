@@ -3,6 +3,8 @@ angular.module('SocketToMe.moderate').controller('ModerateController', ['$scope'
   $scope.questions = [];
   $scope.newQuestion = {};
   $scope.unansweredQuestions = [];
+  $scope.timerFinished = false;
+  $scope.callbackTimer = {};
 
   $scope.init = function () {
 
@@ -85,6 +87,11 @@ angular.module('SocketToMe.moderate').controller('ModerateController', ['$scope'
 
     }
 
+  }
+
+  $scope.callbackTimer.finished = function () {
+    $scope.timerFinished = true;
+    $scope.$apply();
   }
 
   $scope.init();
