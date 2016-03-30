@@ -55,6 +55,6 @@ angular.module('SocketToMe.participate').controller('ParticipateController', ['$
     });
   };
 
-  $ctrl.init()
+  $ctrl.init();
 
 }]);
