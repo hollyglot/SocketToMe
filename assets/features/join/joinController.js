@@ -34,23 +34,23 @@ angular.module('SocketToMe.join').controller('JoinController', ['$scope', '$loca
           $location.path('/moderate/setup/' + $scope.meeting.name);
           $scope.$apply();
         } else {
-          $scope.error = "No meeting exists with this name, enter a password to create an event."
+          $scope.error = "No meeting exists with this name, enter a password to create an event.";
           $scope.$apply();
         }
-      };
+      }
     });
 
-  }
+  };
 
   $ctrl.createMeeting = function() {
     io.socket.post('/meeting', $scope.meeting, function (newMeeting) {
       $scope.$root.modToken = $scope.meeting.name + $scope.meeting.password;
     });
-  }
+  };
 
   $ctrl.joinMeeting = function() {
     $location.path('/participate/' + $scope.meeting.name);
     $scope.$apply();
-  }
+  };
 
 }]);

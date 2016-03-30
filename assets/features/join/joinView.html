@@ -13,11 +13,9 @@
     </div>
 
     <div class="row" ng-if="error.length">
-        <!-- <div class="col s12 m5"> -->
-          <div class="card-panel red">
-            <span class="white-text">{{error}}</span>
-          </div>
-        <!-- </div> -->
+      <div class="card-panel red">
+        <span class="white-text">{{error}}</span>
+      </div>
     </div>
 
     <button class="btn-large">{{meeting.password.length > 0 ? 'Create' : 'Join'}} Meeting</button>

@@ -18,7 +18,7 @@ angular.module('SocketToMe.moderate').controller('ModerateController', ['$scope'
       $scope.$apply();
     });
 
-  }
+  };
 
   $scope.$root.$watch('meeting', function (newValue) {
 
@@ -88,7 +88,7 @@ angular.module('SocketToMe.moderate').controller('ModerateController', ['$scope'
 
     $ctrl.getResponses();
 
-  }
+  };
 
   $ctrl.getResponses = function () {
 
@@ -109,7 +109,7 @@ angular.module('SocketToMe.moderate').controller('ModerateController', ['$scope'
       $scope.$apply();
 
     });
-  }
+  };
 
   $scope.init();
 
