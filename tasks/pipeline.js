@@ -21,7 +21,9 @@ var cssFilesToInject = [
 var libraryDependencies = [
   // Angular dependencies
   'components/angular-ui-router/release/angular-ui-router.min.js',
-  'components/angular-sails-socket/dist/angular-sails-socket.min.js'
+  'components/angular-sails-socket/dist/angular-sails-socket.min.js',
+  'components/angular-sanitize/angular-sanitize.min.js',
+  'components/ng-csv/build/ng-csv.min.js',
 ];
 
 // Client-side javascript files to inject in order
