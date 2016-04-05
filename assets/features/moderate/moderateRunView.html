@@ -30,6 +30,7 @@
 </div>
 
 <button class="btn" ng-click="continue()">Continue</button>
+<button class="btn" ng-if="meeting.currentQuestion.isDone" ng-csv="assembleResponses" csv-header="[meeting.currentQuestion.value]" filename="{{meeting.name}}_Question_{{questionOrdinal}}.csv">Export Responses</button>
 <p ng-if="meeting.currentAction === 'respond'">Folks are currently answering this question</p>
 <p ng-if="meeting.currentAction === 'review'">Showing results for this question</p>
 <p>Question Status: <span ng-bind="meeting.currentQuestion.isDone ? 'Done' : 'In Progress'"></span></p>

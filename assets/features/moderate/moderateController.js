@@ -1,9 +1,10 @@
-angular.module('SocketToMe.moderate').controller('ModerateController', ['$scope', '$stateParams', '$location', function ($scope, $stateParams, $location) {
+angular.module('SocketToMe.moderate').controller('ModerateController', ['$scope', '$stateParams', '$location', 'Utilities', function ($scope, $stateParams, $location, Utilities) {
 
   $ctrl = this;
   $scope.questions = [];
   $scope.newQuestion = {};
   $scope.unansweredQuestions = [];
+  $scope.questionOrdinal = -1;
 
   $scope.init = function () {
 
@@ -65,6 +66,12 @@ angular.module('SocketToMe.moderate').controller('ModerateController', ['$scope'
         $scope.$apply();
       });
 
+      for(var i = 0, len = $scope.questions.length; i < len; i++) {
+        if ($scope.questions[i].id == $scope.$root.meeting.currentQuestion.id) {
+          $scope.questionOrdinal = i + 1;
+        }
+      }
+
     } else {
 
       io.socket.get('/question', {meeting: $scope.$root.meeting.id, isDone: false}, function (unansweredQuestions) {
@@ -76,12 +83,10 @@ angular.module('SocketToMe.moderate').controller('ModerateController', ['$scope'
             $scope.$root.meeting = updatedMeeting;
             $scope.$apply();
           });
-
         } else {
           console.log('end of meeting!');
           // This is the last question
         }
-
       });
 
     }
@@ -89,6 +94,11 @@ angular.module('SocketToMe.moderate').controller('ModerateController', ['$scope'
     $ctrl.getResponses();
 
   };
+
+  $scope.assembleResponses = function () {
+    var responses = Utilities.zip($scope.allResponses.stop, $scope.allResponses.start, $scope.allResponses.cont);
+    return Utilities.prepend(["Stop", "Start", "Continue"], responses);
+  }
 
   $ctrl.getResponses = function () {
 
